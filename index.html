@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>XO Game</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="game-container">
+
+        <h1>yuvviiii's</h1>
+
+        <p class="subtitle">TIC TAC TOE</p>
+
+        <!-- SCORE -->
+        <div class="score-board">
+
+            <div class="score-card x-score">
+                <span>PLAYER X</span>
+                <strong id="xScore">0</strong>
+            </div>
+
+            <div class="score-card o-score">
+                <span>PLAYER O</span>
+                <strong id="oScore">0</strong>
+            </div>
+
+        </div>
+
+        <!-- STATUS -->
+        <p id="status">PLAYER X TURN</p>
+
+        <!-- BOARD -->
+        <div class="board">
+
+            <button class="cell"></button>
+            <button class="cell"></button>
+            <button class="cell"></button>
+
+            <button class="cell"></button>
+            <button class="cell"></button>
+            <button class="cell"></button>
+
+            <button class="cell"></button>
+            <button class="cell"></button>
+            <button class="cell"></button>
+
+        </div>
+
+        <button id="restart">RESTART GAME</button>
+
+    </div>
+
+
+    <!-- WIN POPUP -->
+
+    <div id="winPopup" class="popup-overlay">
+
+        <div class="win-popup">
+
+            <div class="trophy">🏆</div>
+
+            <p class="popup-small">GAME OVER</p>
+
+            <h2 id="winnerText">YOU WIN!</h2>
+
+            <p id="winnerSubtext">PLAYER X WINS</p>
+
+            <button id="playAgain">PLAY AGAIN</button>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>

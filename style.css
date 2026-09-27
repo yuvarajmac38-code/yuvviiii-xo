@@ -1,0 +1,476 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: Arial, sans-serif;
+
+    background:
+        radial-gradient(circle at 50% 0%,
+        #092d63 0%,
+        #031027 35%,
+        #01030a 70%,
+        #000000 100%);
+
+    color: white;
+
+    overflow: hidden;
+}
+
+
+/* MAIN CONTAINER */
+
+.game-container {
+    width: 100%;
+    max-width: 430px;
+
+    padding: 30px 20px;
+
+    text-align: center;
+}
+
+
+/* TITLE */
+
+h1 {
+    font-size: 52px;
+
+    letter-spacing: 5px;
+
+    margin-bottom: 0;
+
+    color: white;
+
+    text-transform: lowercase;
+
+    text-shadow:
+        0 0 10px #008cff,
+        0 0 25px #0077ff,
+        0 0 50px #0055ff;
+}
+
+.subtitle {
+    color: #5faeff;
+
+    font-size: 11px;
+
+    letter-spacing: 6px;
+
+    margin-bottom: 22px;
+}
+
+
+/* SCORE */
+
+.score-board {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    margin-bottom: 20px;
+}
+
+.score-card {
+    width: 125px;
+
+    padding: 12px;
+
+    border-radius: 14px;
+
+    background:
+        rgba(5, 18, 40, 0.8);
+
+    border: 1px solid rgba(0, 140, 255, 0.35);
+
+    box-shadow:
+        inset 0 0 20px rgba(0, 100, 255, 0.08),
+        0 0 15px rgba(0, 100, 255, 0.12);
+
+    backdrop-filter: blur(10px);
+}
+
+.score-card span {
+    display: block;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    color: #7fbfff;
+}
+
+.score-card strong {
+    display: block;
+
+    margin-top: 4px;
+
+    font-size: 27px;
+
+    color: white;
+
+    text-shadow:
+        0 0 10px #008cff;
+}
+
+
+/* STATUS */
+
+#status {
+    margin-bottom: 20px;
+
+    font-size: 14px;
+
+    letter-spacing: 3px;
+
+    color: #8bcaff;
+
+    text-shadow:
+        0 0 12px #008cff;
+}
+
+
+/* BOARD */
+
+.board {
+    width: 330px;
+    height: 330px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 10px;
+
+    padding: 10px;
+
+    border-radius: 24px;
+
+    background:
+        rgba(0, 12, 28, 0.8);
+
+    border: 1px solid rgba(0, 140, 255, 0.5);
+
+    box-shadow:
+        0 0 25px rgba(0, 110, 255, 0.25),
+        0 0 70px rgba(0, 70, 255, 0.12),
+        inset 0 0 30px rgba(0, 100, 255, 0.08);
+
+    backdrop-filter: blur(15px);
+}
+
+
+/* CELLS */
+
+.cell {
+    border: 1px solid rgba(0, 140, 255, 0.3);
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(12, 30, 58, 0.95),
+            rgba(2, 7, 15, 0.98)
+        );
+
+    color: white;
+
+    font-size: 52px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.cell:hover {
+    transform: scale(1.04);
+
+    border-color: #008cff;
+
+    box-shadow:
+        0 0 18px rgba(0, 140, 255, 0.4);
+}
+
+
+/* X */
+
+.cell.x {
+    color: #00aaff;
+
+    text-shadow:
+        0 0 8px #008cff,
+        0 0 20px #0077ff,
+        0 0 40px #0055ff;
+
+    animation: pop 0.25s ease;
+}
+
+
+/* O */
+
+.cell.o {
+    color: white;
+
+    text-shadow:
+        0 0 8px white,
+        0 0 20px #4da6ff,
+        0 0 40px #006eff;
+
+    animation: pop 0.25s ease;
+}
+
+
+/* POP */
+
+@keyframes pop {
+
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+
+    70% {
+        transform: scale(1.12);
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
+/* WINNING CELLS */
+
+.cell.win {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(0, 120, 255, 0.5),
+            rgba(0, 25, 70, 0.9)
+        );
+
+    border-color: #00aaff;
+
+    animation: winnerGlow 0.7s infinite alternate;
+}
+
+@keyframes winnerGlow {
+
+    from {
+        box-shadow:
+            0 0 10px #008cff;
+    }
+
+    to {
+        box-shadow:
+            0 0 25px #008cff,
+            0 0 50px #0066ff;
+    }
+}
+
+
+/* RESTART */
+
+#restart,
+#playAgain {
+
+    margin-top: 25px;
+
+    padding: 14px 30px;
+
+    border-radius: 12px;
+
+    border: 1px solid #008cff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0066cc,
+            #003b80
+        );
+
+    color: white;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 15px rgba(0, 110, 255, 0.35);
+
+    transition: 0.2s ease;
+}
+
+#restart:hover,
+#playAgain:hover {
+
+    transform: translateY(-3px);
+
+    background:
+        linear-gradient(
+            135deg,
+            #008cff,
+            #0055aa
+        );
+
+    box-shadow:
+        0 0 20px #008cff,
+        0 0 40px rgba(0, 110, 255, 0.5);
+}
+
+
+/* POPUP BACKGROUND */
+
+.popup-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    background:
+        rgba(0, 3, 12, 0.82);
+
+    backdrop-filter: blur(12px);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition: 0.3s ease;
+}
+
+.popup-overlay.show {
+
+    opacity: 1;
+
+    visibility: visible;
+}
+
+
+/* PREMIUM POPUP */
+
+.win-popup {
+
+    width: 320px;
+
+    padding: 35px 25px;
+
+    text-align: center;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(8, 28, 60, 0.98),
+            rgba(1, 7, 18, 0.99)
+        );
+
+    border: 1px solid rgba(0, 160, 255, 0.6);
+
+    box-shadow:
+        0 0 25px rgba(0, 130, 255, 0.45),
+        0 0 80px rgba(0, 80, 255, 0.2),
+        inset 0 0 30px rgba(0, 120, 255, 0.08);
+
+    transform: scale(0.7);
+
+    transition: 0.35s ease;
+}
+
+.popup-overlay.show .win-popup {
+
+    transform: scale(1);
+}
+
+
+/* TROPHY */
+
+.trophy {
+
+    font-size: 55px;
+
+    margin-bottom: 8px;
+
+    filter:
+        drop-shadow(0 0 15px #008cff);
+}
+
+.popup-small {
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    color: #67baff;
+}
+
+.win-popup h2 {
+
+    margin-top: 8px;
+
+    font-size: 35px;
+
+    letter-spacing: 3px;
+
+    color: white;
+
+    text-shadow:
+        0 0 10px #008cff,
+        0 0 25px #0066ff;
+}
+
+#winnerSubtext {
+
+    margin-top: 8px;
+
+    color: #9bcfff;
+
+    font-size: 13px;
+
+    letter-spacing: 2px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 500px) {
+
+    h1 {
+        font-size: 58px;
+    }
+
+    .board {
+        width: 290px;
+        height: 290px;
+    }
+
+    .cell {
+        font-size: 45px;
+    }
+}
